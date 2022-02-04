@@ -12,7 +12,14 @@ class m220204_201126_create_table_place extends Migration
      */
     public function safeUp()
     {
-
+        $this->createTable('place',[
+        'id'=> $this->primaryKey()->unsigned(),
+        'place_id'=>$this->string(45)->notNull(),
+        'lat'=> $this->string(45)->notNull(),
+        'lng'=> $this->string(45)->notNull(),
+        'country_code' => $this->string(2)->notNull(),
+        'is_country'=>$this->boolean()
+        ]);
     }
 
     /**
@@ -20,7 +27,7 @@ class m220204_201126_create_table_place extends Migration
      */
     public function safeDown()
     {
-        echo "m220204_201126_create_table_place cannot be reverted.\n";
+        $this->dropTable('place');
 
         return false;
     }
